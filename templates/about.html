@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About &mdash; BrainScan AI</title>
+<title>About &mdash; kidneyScan AI</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -175,7 +175,7 @@
 <body>
 
 <nav>
-  <a href="/" class="logo">BrainScan AI</a>
+  <a href="/" class="logo">kidneyScan AI</a>
   <ul>
     <li><a href="/">Home</a></li>
     <li><a href="/classify">Classify</a></li>
@@ -186,7 +186,7 @@
 
 <div class="hero-strip">
   <h2>About the Project</h2>
-  <p>A deep learning system for binary classification of brain MRI scans — distinguishing tumor from normal tissue.</p>
+  <p>A deep learning system for binary classification of kidney MRI scans — distinguishing tumor from normal tissue.</p>
 </div>
 
 <div class="content">
@@ -194,7 +194,7 @@
   <div class="section">
     <p class="section-label">Overview</p>
     <h3>What it does</h3>
-    <p>BrainScan AI takes a brain MRI image as input and outputs a prediction — either <em>Tumor</em> or <em>Normal</em> — along with a confidence score derived from the model's raw sigmoid output.</p>
+    <p>kidneyScan AI takes a kidney MRI image as input and outputs a prediction — either <em>Tumor</em> or <em>Normal</em> — along with a confidence score derived from the model's raw sigmoid output.</p>
     <p>The model is a convolutional neural network trained on labelled MRI datasets. Images are resized to 224×224 pixels, normalized, and passed through the network. The output neuron uses a sigmoid activation; values above 0.5 are classified as Tumor.</p>
   </div>
 
