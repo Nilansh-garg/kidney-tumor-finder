@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrainScan AI</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f5f3ef;
+    color: #1a1a1a;
+    min-height: 100vh;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: #fff;
+    border-bottom: 1px solid #e5e2db;
+  }
+
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: #1a1a1a;
+    text-decoration: none;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav ul a {
+    text-decoration: none;
+    color: #555;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    transition: color 0.2s;
+  }
+
+  nav ul a:hover { color: #1a1a1a; }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 61px);
+  }
+
+  .hero-left {
+    padding: 5rem 3rem 3rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #fff;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7c6f5b;
+    border: 1px solid #d4cec4;
+    padding: 0.3rem 0.8rem;
+    border-radius: 2px;
+    margin-bottom: 1.8rem;
+    width: fit-content;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 3.4rem;
+    line-height: 1.1;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: #5a6e4e;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #666;
+    max-width: 440px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: #1a1a1a;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.85rem 2rem;
+    font-size: 0.9rem;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.02em;
+    transition: background 0.2s;
+    border-radius: 2px;
+    width: fit-content;
+  }
+
+  .btn-primary:hover { background: #333; }
+
+  .hero-right {
+    background: #2c3a28;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scan-visual {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .scan-visual::before {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .scan-visual::after {
+    content: '';
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .scan-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 3rem;
+    left: 3rem;
+  }
+
+  .stats-bar {
+    background: #f5f3ef;
+    padding: 2.5rem 3rem;
+    display: flex;
+    gap: 4rem;
+    border-top: 1px solid #e5e2db;
+    grid-column: 1 / -1;
+    align-items: center;
+  }
+
+  .stat-item {}
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: #1a1a1a;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 0.2rem;
+    letter-spacing: 0.04em;
+  }
+
+  .divider {
+    width: 1px;
+    height: 40px;
+    background: #d4cec4;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">BrainScan AI</a>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/classify">Classify</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-left">
+    <span class="tag">Deep Learning &middot; Medical Imaging</span>
+    <h1>Brain tumor<br>detection, <em>made<br>precise.</em></h1>
+    <p class="hero-desc">Upload an MRI scan and get instant classification. Our convolutional neural network distinguishes tumor from normal tissue with high confidence scoring.</p>
+    <a href="/classify" class="btn-primary">Start Classification</a>
+  </div>
+
+  <div class="hero-right">
+    <div class="scan-visual"></div>
+    <span class="scan-text">MRI Analysis</span>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-num">224px</div>
+      <div class="stat-label">Input resolution</div>
+    </div>
+    <div class="divider"></div>
+    <div class="stat-item">
+      <div class="stat-num">CNN</div>
+      <div class="stat-label">Model architecture</div>
+    </div>
+    <div class="divider"></div>
+    <div class="stat-item">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Output classes</div>
+    </div>
+    <div class="divider"></div>
+    <div class="stat-item">
+      <div class="stat-num">&lt; 1s</div>
+      <div class="stat-label">Inference time</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About &mdash; BrainScan AI</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f5f3ef;
+    color: #1a1a1a;
+    min-height: 100vh;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: #fff;
+    border-bottom: 1px solid #e5e2db;
+  }
+
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: #1a1a1a;
+    text-decoration: none;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav ul a {
+    text-decoration: none;
+    color: #555;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  nav ul a:hover { color: #1a1a1a; }
+
+  .hero-strip {
+    background: #2c3a28;
+    color: #fff;
+    padding: 4rem 3rem;
+  }
+
+  .hero-strip h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    margin-bottom: 0.8rem;
+  }
+
+  .hero-strip p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  .content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem;
+  }
+
+  .section {
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-bottom: 1.2rem;
+  }
+
+  .section h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.7rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+
+  .section p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.75;
+    font-weight: 300;
+    max-width: 640px;
+  }
+
+  .section p + p {
+    margin-top: 0.9rem;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #e5e2db;
+    margin: 2.5rem 0;
+  }
+
+  .pipeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: #e5e2db;
+    border: 1px solid #e5e2db;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 1.5rem;
+  }
+
+  .pipe-step {
+    background: #fff;
+    padding: 1.4rem 1.2rem;
+  }
+
+  .pipe-num {
+    font-size: 0.7rem;
+    color: #bbb;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.6rem;
+  }
+
+  .pipe-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+  }
+
+  .pipe-desc {
+    font-size: 0.8rem;
+    color: #888;
+    line-height: 1.5;
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+  }
+
+  .tech-tag {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.8rem;
+    background: #fff;
+    border: 1px solid #e5e2db;
+    border-radius: 2px;
+    color: #555;
+  }
+
+  .disclaimer {
+    background: #fff8f0;
+    border: 1px solid #f0e4cc;
+    border-radius: 4px;
+    padding: 1.2rem 1.5rem;
+    font-size: 0.85rem;
+    color: #8a6a3a;
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">BrainScan AI</a>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/classify">Classify</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero-strip">
+  <h2>About the Project</h2>
+  <p>A deep learning system for binary classification of brain MRI scans — distinguishing tumor from normal tissue.</p>
+</div>
+
+<div class="content">
+
+  <div class="section">
+    <p class="section-label">Overview</p>
+    <h3>What it does</h3>
+    <p>BrainScan AI takes a brain MRI image as input and outputs a prediction — either <em>Tumor</em> or <em>Normal</em> — along with a confidence score derived from the model's raw sigmoid output.</p>
+    <p>The model is a convolutional neural network trained on labelled MRI datasets. Images are resized to 224×224 pixels, normalized, and passed through the network. The output neuron uses a sigmoid activation; values above 0.5 are classified as Tumor.</p>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <p class="section-label">Pipeline</p>
+    <h3>How it works</h3>
+    <div class="pipeline">
+      <div class="pipe-step">
+        <div class="pipe-num">01</div>
+        <div class="pipe-name">Upload</div>
+        <div class="pipe-desc">Image sent as base64 via POST /predict</div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num">02</div>
+        <div class="pipe-name">Preprocess</div>
+        <div class="pipe-desc">Resize to 224×224, normalize to [0,1]</div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num">03</div>
+        <div class="pipe-name">Inference</div>
+        <div class="pipe-desc">CNN forward pass, sigmoid output</div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num">04</div>
+        <div class="pipe-name">Result</div>
+        <div class="pipe-desc">Class + confidence returned as JSON</div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <p class="section-label">Stack</p>
+    <h3>Technologies used</h3>
+    <div class="tech-stack">
+      <span class="tech-tag">TensorFlow / Keras</span>
+      <span class="tech-tag">Flask</span>
+      <span class="tech-tag">DVC</span>
+      <span class="tech-tag">NumPy</span>
+      <span class="tech-tag">Python 3</span>
+      <span class="tech-tag">Flask-CORS</span>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="disclaimer">
+    This project is built for research and educational purposes. It is not validated for clinical use and should not be used as a substitute for professional medical diagnosis or advice.
+  </div>
+
+</div>
+
+</body>
+</html>

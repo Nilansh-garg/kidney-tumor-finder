@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact &mdash; BrainScan AI</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f5f3ef;
+    color: #1a1a1a;
+    min-height: 100vh;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: #fff;
+    border-bottom: 1px solid #e5e2db;
+  }
+
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: #1a1a1a;
+    text-decoration: none;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+
+  nav ul a {
+    text-decoration: none;
+    color: #555;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  nav ul a:hover { color: #1a1a1a; }
+
+  .page {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 61px);
+  }
+
+  .left-col {
+    background: #fff;
+    padding: 4rem 3rem;
+    border-right: 1px solid #e5e2db;
+  }
+
+  .left-col h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+
+  .left-col p {
+    font-size: 0.95rem;
+    color: #777;
+    line-height: 1.7;
+    font-weight: 300;
+    max-width: 340px;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-item {
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-item-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #bbb;
+    margin-bottom: 0.3rem;
+  }
+
+  .contact-item-value {
+    font-size: 0.95rem;
+    color: #444;
+  }
+
+  .right-col {
+    padding: 4rem 3rem;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.03em;
+  }
+
+  .form-group {
+    margin-bottom: 1.4rem;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus {
+    border-color: #888;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 130px;
+    line-height: 1.6;
+  }
+
+  .submit-btn {
+    background: #1a1a1a;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 2px;
+    letter-spacing: 0.02em;
+    transition: background 0.2s;
+  }
+
+  .submit-btn:hover { background: #333; }
+
+  .success-msg {
+    display: none;
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+    background: #f1f6f1;
+    border: 1px solid #c8e0c8;
+    border-radius: 2px;
+    font-size: 0.85rem;
+    color: #3a7a3a;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">BrainScan AI</a>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/classify">Classify</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+  <div class="left-col">
+    <h2>Get in<br>touch</h2>
+    <p>Have questions about the model, the dataset, or want to collaborate? Reach out.</p>
+
+    <div class="contact-item">
+      <div class="contact-item-label">Email</div>
+      <div class="contact-item-value">hello@brainscan.ai</div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item-label">GitHub</div>
+      <div class="contact-item-value">github.com/brainscan-ai</div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item-label">Response time</div>
+      <div class="contact-item-value">Usually within 48 hours</div>
+    </div>
+  </div>
+
+  <div class="right-col">
+    <div class="form-group">
+      <label class="form-label" for="name">Name</label>
+      <input type="text" id="name" placeholder="Your name">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="email">Email</label>
+      <input type="email" id="email" placeholder="you@example.com">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="subject">Subject</label>
+      <input type="text" id="subject" placeholder="e.g. Model accuracy question">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="message">Message</label>
+      <textarea id="message" placeholder="Write your message here..."></textarea>
+    </div>
+    <button class="submit-btn" id="submitBtn">Send Message</button>
+    <div class="success-msg" id="successMsg">Message sent. We'll get back to you soon.</div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('submitBtn').addEventListener('click', function() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email || !message) {
+      alert('Please fill in name, email, and message.');
+      return;
+    }
+
+    this.textContent = 'Sending...';
+    this.disabled = true;
+
+    setTimeout(() => {
+      document.getElementById('successMsg').style.display = 'block';
+      this.textContent = 'Send Message';
+      this.disabled = false;
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('subject').value = '';
+      document.getElementById('message').value = '';
+    }, 900);
+  });
+</script>
+
+</body>
+</html>
