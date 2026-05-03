@@ -1,21 +1,31 @@
 import numpy as np
-from tensorflow.keras.models import load_model
+from tensorflow.keras.models import model_from_json
 from tensorflow.keras.preprocessing import image
 from huggingface_hub import hf_hub_download
 import os
 
-MODEL_PATH = "artifacts/training/model.keras"
+WEIGHTS_PATH = "artifacts/training/model_weights.weights.h5"
+ARCH_PATH = "artifacts/training/model_architecture.json"
 
 def get_model():
-    if not os.path.exists(MODEL_PATH):
-        os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
+    if not os.path.exists(WEIGHTS_PATH):
+        os.makedirs("artifacts/training", exist_ok=True)
         hf_hub_download(
             repo_id="Nilansh13/kidney-tumor-model",
-            filename="model.keras",
+            filename="model_weights.weights.h5",
             local_dir="artifacts/training",
             repo_type="model"
         )
-    return load_model(MODEL_PATH)
+        hf_hub_download(
+            repo_id="Nilansh13/kidney-tumor-model",
+            filename="model_architecture.json",
+            local_dir="artifacts/training",
+            repo_type="model"
+        )
+    with open(ARCH_PATH, "r") as f:
+        model = model_from_json(f.read())
+    model.load_weights(WEIGHTS_PATH)
+    return model
 
 class predict_pipeline:
     def __init__(self, filename):
