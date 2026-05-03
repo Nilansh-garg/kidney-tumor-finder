@@ -9,11 +9,7 @@ class predict_pipeline:
         self.filename = filename
               
     def predict(self):
-        # load model with safe_mode to ignore quantization_config
-        model = load_model(
-            os.path.join("artifacts","training","model.h5"),
-            safe_mode=False
-        )
+        model = load_model(os.path.join("artifacts","training","model.h5"))
         imagename = self.filename
         test_image = image.load_img(imagename, target_size = (224,224))
         test_image = image.img_to_array(test_image)
@@ -25,7 +21,6 @@ class predict_pipeline:
          
         print(result)
                  
-        # Get confidence score (probability of predicted class)
         prob = float(raw_prediction[0][0])
         confidence = prob if result == 1 else 1 - prob
                  
