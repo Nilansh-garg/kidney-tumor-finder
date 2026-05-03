@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 import os
+import traceback
 from flask_cors import CORS, cross_origin
 from cnnClassifier.utils.common import decodeImage
 from cnnClassifier.pipeline.prediction import predict_pipeline
@@ -15,7 +16,6 @@ class ClientApp:
         self.filename = "inputImage.jpg"
         self.classifier = predict_pipeline(self.filename)
 
-# THIS IS THE FIX - global initialization
 clApp = ClientApp()
 
 @app.route("/", methods=["GET"])
@@ -46,10 +46,16 @@ def predictRoute():
         decodeImage(image, clApp.filename)
         result = clApp.classifier.predict()
         return jsonify(result)
-    except KeyError:
-        return jsonify({"status": "error", "message": "No image data provided"}), 400
     except Exception as e:
-        return jsonify({"status": "error", "message": str(e)}), 500
+        # Log full error details
+        error_details = traceback.format_exc()
+        print("PREDICTION ERROR:")
+        print(error_details)
+        return jsonify({
+            "status": "error", 
+            "message": str(e),
+            "details": error_details
+        }), 500
 
 @app.route("/health", methods=["GET"])
 @cross_origin()
